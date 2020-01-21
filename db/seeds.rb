@@ -1,9 +1,13 @@
 require 'faker'
 
+Book.destroy_all
+User.destroy_all
+Bookcase.destroy_all
+
 50.times do
   Book.create(
     title: Faker::Book.title,
-    descripton: Faker::TvShows::DrWho.quote,
+    description: Faker::TvShows::DrWho.quote,
     cover_image: Faker::LoremFlickr.image(size: "50x60", search_terms: ['books']),
     author: Faker::Book.author,
     publisher: Faker::Book.publisher,
@@ -29,14 +33,14 @@ users = User.all
   )
 end
 
-50.times do
-  Author.create(
-    name: Faker::Book.author
-  )
-end
+# 50.times do
+#   Author.create(
+#     name: Faker::Book.author
+#   )
+# end
 
-50.times do
-  Publisher.create(
-    name: Faker::Book.publisher
-  )
-end
+# 50.times do
+#   Publisher.create(
+#     name: Faker::Book.publisher
+#   )
+# end
