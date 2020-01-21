@@ -1,11 +1,7 @@
 require 'faker'
 
-Books.destory_all
-Authors.destory_all
-Publishers.destory_all
-
 50.times do
-  Books.create(
+  Book.create(
     title: Faker::Book.title,
     descripton: Faker::TvShows::DrWho.quote,
     cover_image: Faker::LoremFlickr.image(size: "50x60", search_terms: ['books']),
@@ -16,14 +12,31 @@ Publishers.destory_all
   )
 end
 
+5.times do
+  User.create(
+    username: Faker::Name.first_name
+  )
+end
+
+# prep for bookcases
+books = Book.all
+users = User.all
+
+20.times do
+  Bookcase.create(
+    book_id: books.sample.id,
+    user_id: users.sample.id
+  )
+end
+
 50.times do
-  Authors.create(
+  Author.create(
     name: Faker::Book.author
   )
 end
 
 50.times do
-  Publishers.create(
+  Publisher.create(
     name: Faker::Book.publisher
   )
 end
