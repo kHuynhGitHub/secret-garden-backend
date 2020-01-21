@@ -1,9 +1,5 @@
 require 'faker'
 
-Books.destory_all
-Authors.destory_all
-Publishers.destory_all
-
 50.times do
   Books.create(
     title: Faker::Book.title,
@@ -17,13 +13,13 @@ Publishers.destory_all
 end
 
 50.times do
-  Authors.create(
+  Author.create(
     name: Faker::Book.author
   )
 end
 
 50.times do
-  Publishers.create(
+  Publisher.create(
     name: Faker::Book.publisher
   )
 end
