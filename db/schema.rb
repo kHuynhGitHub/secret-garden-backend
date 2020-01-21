@@ -21,15 +21,14 @@ ActiveRecord::Schema.define(version: 2020_01_21_171521) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "books", force: :cascade do |t|
-    t.string "title"
-    t.string "cover_image"
-    t.integer "author"
-    t.integer "publisher"
-    t.integer "page_count"
-    t.string "genre"
+
+  create_table "bookcases", force: :cascade do |t|
+    t.bigint "book_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_bookcases_on_book_id"
+    t.index ["user_id"], name: "index_bookcases_on_user_id"
   end
 
   create_table "books_users", force: :cascade do |t|
@@ -41,18 +40,6 @@ ActiveRecord::Schema.define(version: 2020_01_21_171521) do
     t.index ["users_id"], name: "index_books_users_on_users_id"
   end
 
-  create_table "publishers", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  add_foreign_key "books_users", "books", column: "books_id"
-  add_foreign_key "books_users", "users", column: "users_id"
+  add_foreign_key "bookcases", "books"
+  add_foreign_key "bookcases", "users"
 end
