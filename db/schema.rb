@@ -9,19 +9,18 @@
 # migrations use external dependencies or application code.
 #
 # It's strongly recommended that you check this file into your version control system.
-
 ActiveRecord::Schema.define(version: 2020_01_21_171521) do
+
+
 
   # These are extensions that must be enabled in order to support this database
   # some comment
   enable_extension "plpgsql"
-
   create_table "authors", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
   create_table "bookcases", force: :cascade do |t|
     t.bigint "book_id", null: false
     t.bigint "user_id", null: false
@@ -30,7 +29,6 @@ ActiveRecord::Schema.define(version: 2020_01_21_171521) do
     t.index ["book_id"], name: "index_bookcases_on_book_id"
     t.index ["user_id"], name: "index_bookcases_on_user_id"
   end
-
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "cover_image"
@@ -41,19 +39,16 @@ ActiveRecord::Schema.define(version: 2020_01_21_171521) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
   create_table "publishers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
   add_foreign_key "bookcases", "books"
   add_foreign_key "bookcases", "users"
 end
