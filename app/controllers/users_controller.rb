@@ -15,8 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    # user = find_user
-    user = find_user_by_username
+    user = find_user
     if user
       final_json = { json: user, :include => {
         :books => { :except => [:created_at, :updated_at] }
