@@ -15,7 +15,21 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = find_user
+    # user = find_user
+    user = find_user_by_username
+    if user
+      final_json = { json: user, :include => {
+        :books => { :except => [:created_at, :updated_at] }
+      }, :except => [:created_at, :updated_at] }
+    else
+      final_json = { json: get_404_error_msg }
+    end
+    render(final_json)
+  end
+
+  # TODO: make this co-exist with with 'show'
+  def show_username
+    user = find_user_by_username
     if user
       final_json = { json: user, :include => {
         :books => { :except => [:created_at, :updated_at] }
@@ -88,6 +102,10 @@ class UsersController < ApplicationController
 
     def find_user
       User.find_by(id: params[:id])
+    end
+
+    def find_user_by_username
+      User.where(["LOWER(username) = ?", params[:username].downcase])
     end
 
     def get_404_error_msg(msgTxt = "User not found.")
