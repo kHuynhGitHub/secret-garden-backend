@@ -5,14 +5,14 @@ Book.destroy_all
 User.destroy_all
 
 imgs = [
-  "assets/images/25a5ea0b96303756c3f3204b9feeaed8--programming-humor-stack-overflow.jpg",
-  "assets/images/0354ce58a7a4308edcc46dd9238e12d7--programming-humor-software-development.jpg",
-  "assets/images/136863.jpg",
-  "assets/images/1787205.jpg",
-  "assets/images/Cf7eHZ1W4AEeZJA.jpg",
-  "assets/images/Cg0x8vnXEAEB2Le.jpg",
-  "assets/images/lrg.jpg",
-  "assets/images/lrg2.jpg"
+  "assets/images/cover1.jpg",
+  "assets/images/cover2.jpg",
+  "assets/images/cover3.jpg",
+  "assets/images/cover4.jpg",
+  "assets/images/cover5.jpg",
+  "assets/images/cover6.jpg",
+  "assets/images/cover7.jpg",
+  "assets/images/cover8.jpg"
 ]
 
 50.times do
