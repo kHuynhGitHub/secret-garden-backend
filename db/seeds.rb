@@ -1,5 +1,6 @@
 require 'faker'
 
+p 'begin seeding'
 Bookcase.destroy_all
 Book.destroy_all
 User.destroy_all
@@ -32,7 +33,7 @@ end
     username: Faker::Name.first_name
   )
 end
-
+p 'seeding...'
 # prep for bookcases
 books = Book.all
 users = User.all
@@ -55,3 +56,4 @@ end
 #     name: Faker::Book.publisher
 #   )
 # end
+p 'seeded!'
