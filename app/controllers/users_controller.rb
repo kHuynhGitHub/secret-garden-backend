@@ -4,7 +4,8 @@ class UsersController < ApplicationController
     users = User.all
     if (users.length > 1)
       final_json = { json: users, :include => {
-            :books => { :except => [:created_at, :updated_at] }
+            :books => { :except => [:created_at, :updated_at] },
+            :bookcases => { :except => [:created_at, :updated_at] }
           },
           :except => [:created_at, :updated_at]
       }
