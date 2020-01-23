@@ -19,7 +19,8 @@ class UsersController < ApplicationController
     user = find_user
     if user
       final_json = { json: user, :include => {
-        :books => { :except => [:created_at, :updated_at] }
+        :books => { :except => [:created_at, :updated_at] },
+        :bookcases => { :except => [:created_at, :updated_at] }
       }, :except => [:created_at, :updated_at] }
     else
       final_json = { json: get_404_error_msg }
